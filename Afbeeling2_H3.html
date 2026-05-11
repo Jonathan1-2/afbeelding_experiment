@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: transparent; overflow: hidden; }
+    img {
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+    }
+  </style>
+</head>
+<body>
+  <img
+    src="Afbeelding2_Hoofdstuk3_Handboek.png"
+    alt="Screenshot"
+    onclick="stuurBericht()"
+  >
+
+  <script>
+    function stuurBericht() {
+      window.parent.postMessage({
+        type: 'openImage',
+        src: 'Afbeelding2_Hoofdstuk3_Handboek.png'
+      }, '*');
+    }
+  </script>
+</body>
+</html>
