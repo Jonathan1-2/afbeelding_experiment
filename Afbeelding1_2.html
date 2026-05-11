@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: transparent; overflow: hidden; }
+
+    #thumbnail {
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+      border-radius: 4px;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      z-index: 999;
+    }
+
+    #overlay.active { display: flex; }
+
+    #overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 6px;
+    }
+
+    #sluitknop {
+      position: fixed;
+      top: 12px;
+      right: 18px;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="thumbnail"
+    src="https://jonathan1-2.github.io/afbeelding_experiment/142217-schermafbeelding-2026-05-08-142157%20(1).png"
+    alt="Screenshot"
+    onclick="openOverlay()"
+  >
+
+  <div id="overlay" onclick="closeOverlay()">
+    <span id="sluitknop">✕</span>
+    <img src="https://jonathan1-2.github.io/afbeelding_experiment/142217-schermafbeelding-2026-05-08-142157%20(1).png" alt="Vergroot">
+  </div>
+
+  <script>
+    function openOverlay() {
+      document.getElementById('overlay').classList.add('active');
+      // Vergroot het iframe vanuit de parent pagina
+      window.frameElement.style.position = 'fixed';
+      window.frameElement.style.inset = '0';
+      window.frameElement.style.width = '100vw';
+      window.frameElement.style.height = '100vh';
+      window.frameElement.style.zIndex = '9999';
+    }
+
+    function closeOverlay() {
+      document.getElementById('overlay').classList.remove('active');
+      // Zet iframe terug naar originele grootte
+      window.frameElement.style.position = '';
+      window.frameElement.style.inset = '';
+      window.frameElement.style.width = '100%';
+      window.frameElement.style.height = '450px';
+      window.frameElement.style.zIndex = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeOverlay();
+    });
+  </script>
+
+</body>
+</html>
