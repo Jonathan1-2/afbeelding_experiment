@@ -16,7 +16,16 @@
   <img
     src="https://jonathan1-2.github.io/afbeelding_experiment/142217-schermafbeelding-2026-05-08-142157%20(1).png"
     alt="Screenshot"
-    onclick="parent.openImage('https://jonathan1-2.github.io/afbeelding_experiment/142217-schermafbeelding-2026-05-08-142157%20(1).png')"
+    onclick="stuurBericht()"
   >
+
+  <script>
+    function stuurBericht() {
+      window.parent.postMessage({
+        type: 'openImage',
+        src: 'https://jonathan1-2.github.io/afbeelding_experiment/142217-schermafbeelding-2026-05-08-142157%20(1).png'
+      }, '*');
+    }
+  </script>
 </body>
 </html>
