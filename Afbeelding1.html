@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: transparent;
+    }
+
+    .thumbnail {
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+      border-radius: 4px;
+      transition: opacity 0.2s ease;
+    }
+
+    .thumbnail:hover {
+      opacity: 0.9;
+    }
+
+    /* Lightbox overlay */
+    #overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      cursor: zoom-out;
+      padding: 20px;
+    }
+
+    #overlay.active {
+      display: flex;
+    }
+
+    #overlay img {
+      max-width: 95vw;
+      max-height: 95vh;
+      width: auto;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+
+    #sluit-knop {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      z-index: 1000;
+      line-height: 1;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Verander de src naar jouw GitHub raw PNG-link -->
+  <img
+    class="thumbnail"
+    src="C:\afbeelding_experiment\142217-schermafbeelding-2026-05-08-142157 (1).png"
+    alt="Screenshot"
+    onclick="openOverlay()"
+  >
+
+  <!-- Lightbox -->
+  <div id="overlay" onclick="closeOverlay()">
+    <span id="sluit-knop">&#x2715;</span>
+    <img src="C:\afbeelding_experiment\142217-schermafbeelding-2026-05-08-142157 (1).png" alt="Vergroot">
+  </div>
+
+  <script>
+    function openOverlay() {
+      document.getElementById('overlay').classList.add('active');
+    }
+    function closeOverlay() {
+      document.getElementById('overlay').classList.remove('active');
+    }
+    // Sluit ook met Escape-toets
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeOverlay();
+    });
+  </script>
+
+</body>
+</html>
